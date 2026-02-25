@@ -65,7 +65,7 @@ function App() {
 
     // Check for admin route in URL
     const path = window.location.pathname;
-    if (path === '/admin') {
+   if (path.endsWith('/admin')) {
       if (isAuthenticated) {
         setCurrentSection('admin');
       } else {
@@ -85,7 +85,7 @@ function App() {
     if (success) {
       setCurrentSection('admin');
       // Update URL without page reload
-      window.history.pushState({}, '', '/admin');
+      window.history.pushState({}, '', window.location.origin + '/adverxx/admin');
     }
     return success;
   };
@@ -94,7 +94,7 @@ function App() {
     logout();
     setCurrentSection('home');
     // Update URL without page reload
-    window.history.pushState({}, '', '/');
+    window.history.pushState({}, '', window.location.origin + '/adverxx/');
   };
 
   // Show loading screen
